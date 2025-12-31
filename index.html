@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 | Our Story</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,500&family=Inter:wght@200;300;400&display=swap');
+
+        :root {
+            --bg-cream: #FCFAF7;
+            --gold-accent: #B89B72;
+            --rich-black: #2C2C2C;
+            --soft-gray: #8E8E8E;
+            --border-color: #EAEAEA;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            background-color: var(--bg-cream);
+            font-family: 'Inter', sans-serif;
+            color: var(--rich-black);
+            height: 100vh; overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- VAULT PAGE --- */
+        #vault-screen {
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            transition: opacity 1.5s ease;
+        }
+        .vault-box { text-align: center; max-width: 400px; padding: 20px; }
+        h1 { font-family: 'Playfair Display', serif; font-weight: 400; letter-spacing: 6px; color: var(--gold-accent); margin-bottom: 30px; }
+        
+        .vault-intro {
+            font-size: 0.9rem; line-height: 1.8; color: var(--soft-gray);
+            margin-bottom: 40px; font-weight: 300; letter-spacing: 0.5px;
+        }
+
+        .vault-box input {
+            border: none; border-bottom: 1px solid var(--border-color);
+            background: transparent; width: 80%; padding: 15px 0; 
+            font-size: 1.1rem; text-align: center; outline: none; letter-spacing: 10px;
+            transition: border-color 0.5s;
+        }
+        input:focus { border-bottom: 1px solid var(--gold-accent); }
+
+        /* --- SECRET MESSAGE --- */
+        #message-screen {
+            display: none; height: 100vh; padding: 80px 30px;
+            box-sizing: border-box; overflow-y: auto;
+            opacity: 0; transition: opacity 1.5s ease;
+            text-align: center;
+        }
+        .big-welcome { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold-accent); margin-bottom: 50px; line-height: 1.4; }
+        .final-note { max-width: 500px; margin: 0 auto; text-align: left; line-height: 2.2; font-weight: 300; font-size: 1.05rem; }
+        
+        .start-slideshow-btn {
+            margin: 60px 0; background: none; border: 1px solid var(--gold-accent);
+            padding: 18px 40px; color: var(--gold-accent); cursor: pointer;
+            font-family: 'Inter', sans-serif; letter-spacing: 3px; text-transform: uppercase;
+            font-size: 0.7rem; transition: 0.4s;
+        }
+        .start-slideshow-btn:hover { background: var(--gold-accent); color: white; }
+
+        /* --- SLIDESHOW --- */
+        #slideshow-screen {
+            display: none; height: 100vh; flex-direction: column;
+            align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 1.2s ease;
+        }
+        .slide-frame {
+            width: 85%; max-width: 380px; aspect-ratio: 4/5;
+            background: white; padding: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.02);
+            text-align: center;
+        }
+        .image-container { width: 100%; height: 80%; overflow: hidden; background: #f9f9f9; }
+        #slide-img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.8s ease-in-out; }
+        .memory-note { font-family: 'Playfair Display', serif; font-style: italic; margin-top: 30px; color: var(--soft-gray); font-size: 1rem; transition: opacity 0.5s ease; }
+        
+        .nav-btns { margin-top: 40px; display: flex; gap: 50px; }
+        .nav-btns button { background: none; border: none; font-size: 0.7rem; letter-spacing: 3px; cursor: pointer; color: var(--gold-accent); opacity: 0.6; text-transform: uppercase; }
+        .nav-btns button:hover { opacity: 1; }
+        
+        .fade-out { opacity: 0; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); }
+    </style>
+</head>
+<body>
+
+    <audio id="myAudio" loop><source src="music.mp3" type="audio/mpeg"></audio>
+
+    <div id="vault-screen">
+        <div class="vault-box">
+            <h1>FOR MY HUMRAAZ</h1>
+            <div class="vault-intro">
+                Everything inside this vault belongs to us.<br>
+                It is a collection of my heart’s favorite moments.<br>
+                To enter, use the 6-digit key of the day<br>
+                everything started.
+            </div>
+            <input type="password" id="passcode" placeholder="••••••" maxlength="6" oninput="checkPass()">
+        </div>
+    </div>
+
+    <div id="message-screen">
+        <div class="big-welcome">Hey Meri Wifey, My Chomu, Miss Sathi Sarkar,<br>Thank you for being with me this whole time and entering this new year together.</div>
+        <div class="final-note">
+            <p>Last year, 2025, was a rollercoaster ride like always, full of emotions, memories and conflicts. 2025 ka start hum toota hua pair se kiye the lekin issbaar sab theek hai except tum nahi ho paasme. Pichle saal ek pair ka support nahi tha lekin tum toh thi. Issbaar sab theek hoke bhi kya fayda, mera main part hi paasme nhi. Khair phir dheere dheere time gya aur bahut saari memories bani. Bahut kuch seekhe, bahut saara improvement hua. Aur 3 baar mile bhi ghar aane ke baad. Aur teeno hi bahut adventures se bhada hua tha. Tumhare ghar bhi gaye😆. Phir Bankura gaye saathme, one of the most memorable trips. Phir Karandighi me mile, bike se yahan wahan kiye, we enjoyed a lot. Dono saathme ghume, admire kiye ekdusre ko aur bahut bahut pyaar bhi kiye.</p>
+
+            <p>But jitna joyful tha equally utna tough bhi tha, bahut jhagda hua, bahut arguements hue, bahut saare conflicts hue, we both cried. But aakhir me solve hua ki kyunki we both held together, because our love dominates everything. Aurbhi jhamela hoga, aurbhi jhagda hoga, aurbhi misunderstandings hongi future me, but we are strong enough to deal with them. Bahut saari galtiyan hui mujhse, bahut hurt kiye tumhe, kayi baar theek time pe apologise nahi kiye, kuch waqt me maybe akela chhor diye, bahut baar unknowingly bura feel krwaye ho, and I am soo soo sorry for all that. Anyways, I am your stupid boyfriend and I made mistakes, plenty of mistakes but I am still your Singhtha, your annoying Sayonee, Your Soulmate. Itna sa pareshan krne ka license toh hai.</p>
+            
+            <p>Pehle feel hota tha ki tum tum agar nahi rehti toh kya hota mera, yeh years kaise guzarta, but abhi lagta hai ki tumhare bina maybe kabhi jeeye hi nahi hum. Actually, tumhare aane ke baad hi zindagi jeene layak hua. You taught me many things, in fact, you changed my whole life. From you I got a fresh perspective of life. Thank You Honey❤️.</p>
+           
+            <p>Full of memories, adventures and arguements we completed another year and together we are beginning a new journey with a new year of challenges and adventures coming for us. And hopefully this year goes well for us. Dua karte hai ki iss saal humara relationship aurbhi mazboot ho aur aisehi hamesha dono saath rahe aur aage kuch years me saathme ek ghar me celebrate kre apne little ones ke saath.</p>
+            
+            <p><strong>Happy New Year My Little Angry Bird 🐥.</strong></p>
+            
+            <center>
+                <button class="start-slideshow-btn" onclick="goToSlideshow()">The Journey So Far</button>
+            </center>
+            <div style="height: 60px;"></div> 
+        </div>
+    </div>
+
+    <div id="slideshow-screen">
+        <div class="slide-frame">
+            <div class="image-container"><img id="slide-img" src="photo1.jpg"></div>
+            <div class="memory-note" id="slide-note">Ice Cream Lalchi.</div>
+        </div>
+        <div class="nav-btns">
+            <button onclick="prevSlide()">Prev</button>
+            <button id="nextBtn" onclick="nextSlide()">Next</button>
+        </div>
+    </div>
+
+    <script>
+        const memories = [
+            {img: 'photo1.jpeg', note: 'Ice Cream Lalchi.'},
+            {img: 'photo2.jpeg', note: 'Draped in the colours of all the years spent together as classmates.'},
+            {img: 'photo3.jpeg', note: 'The Classy Couples.'},
+            {img: 'photo4.jpeg', note: 'Looking at the moments of togetherness (Pose ke liye bass).'},
+            {img: 'photo5.jpeg', note: 'Ghibli Virus.'},
+            {img: 'photo6.jpeg', note: 'Cutest One, Chomulal.'},
+            {img: 'photo7.jpeg', note: 'Husband Material🙄.'},
+            {img: 'photo8.jpeg', note: 'Intoxicated By You.'}
+        ];
+
+        let currentIdx = 0;
+
+        function checkPass() {
+            if (document.getElementById('passcode').value === '110422') {
+                document.getElementById('myAudio').play();
+                document.getElementById('vault-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('vault-screen').style.display = 'none';
+                    document.getElementById('message-screen').style.display = 'block';
+                    setTimeout(() => document.getElementById('message-screen').style.opacity = '1', 50);
+                }, 1500);
+            }
+        }
+
+        function goToSlideshow() {
+            document.getElementById('message-screen').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('message-screen').style.display = 'none';
+                document.getElementById('slideshow-screen').style.display = 'flex';
+                setTimeout(() => document.getElementById('slideshow-screen').style.opacity = '1', 50);
+            }, 1200);
+        }
+
+        function nextSlide() {
+            if (currentIdx < memories.length - 1) {
+                transition(() => { currentIdx++; update(); });
+            } else {
+                alert("Smile karte hue cute lag rhi ho. ❤️");
+            }
+        }
+
+        function prevSlide() {
+            if (currentIdx > 0) { transition(() => { currentIdx--; update(); }); }
+        }
+
+        function transition(cb) {
+            const i = document.getElementById('slide-img'), n = document.getElementById('slide-note');
+            i.classList.add('fade-out'); n.classList.add('fade-out');
+            setTimeout(() => { cb(); i.classList.remove('fade-out'); n.classList.remove('fade-out'); }, 800);
+        }
+
+        function update() {
+            document.getElementById('slide-img').src = memories[currentIdx].img;
+            document.getElementById('slide-note').innerText = memories[currentIdx].note;
+            document.getElementById('nextBtn').innerText = (currentIdx === memories.length - 1) ? "THE END" : "NEXT";
+        }
+    </script>
+</body>
+</html>
